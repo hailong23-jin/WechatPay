@@ -48,7 +48,7 @@ type StoreInfo struct {
 
 // 统一下单接口响应结构体
 type ResponseUnifiedOrder struct {						// 是否必须
-	Return_code	string		`xml:"return_code"`		// 是	返回状态码	SUCCESS/FAIL
+	Return_code	string		`xml:"return_code"`			// 是	返回状态码	SUCCESS/FAIL
 	Return_msg	string		`xml:"return_msg"`
 
 	// 以下字段在return_code为SUCCESS的时候有返回
@@ -57,7 +57,7 @@ type ResponseUnifiedOrder struct {						// 是否必须
 	Device_info	string		`xml:"device_info"`
 	Nonce_str	string		`xml:"nonce_str"`			// 是	随机字符串
 	Sign	string			`xml:"sign"`				// 是	签名
-	Result_code	string		`xml:"result_code"`		// 是	业务结果		SUCCESS/FAIL
+	Result_code	string		`xml:"result_code"`			// 是	业务结果		SUCCESS/FAIL
 	Err_code	string		`xml:"err_code"`
 	Err_code_des	string	`xml:"err_code_des"`
 

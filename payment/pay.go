@@ -31,7 +31,7 @@ func TestPayment() {
 		Mch_id:mch_id,
 		Nonce_str:GetNonceStr(32),				// 获取32个随机字符串 数字 + 大写字母
 		Body:"Body",
-		Out_trade_no:GetOutTradeNo(),					// 获取32位商户号, 时间戳 + 随机数
+		Out_trade_no:GetOutTradeNo(),				// 获取32位商户号, 时间戳 + 随机数
 		Total_fee:1000,
 		Spbill_create_ip:ip,
 		Notify_url: notify_url,
