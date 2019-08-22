@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c948483a-6ed3-4c63-b1f4-693deee45ba8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/medlen.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/payment/data.go" beforeDir="false" afterPath="$PROJECT_DIR$/payment/data.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/pay.go" beforeDir="false" afterPath="$PROJECT_DIR$/payment/pay.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,10 +17,75 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/payment/pay.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="37" column="26" lean-forward="true" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+              <folding>
+                <element signature="e#676#708#0" />
+                <element signature="n#!!block;n#TestOrderQuery#0" />
+                <element signature="n#!!block;n#UnifiedOrder#0" />
+                <element signature="e#927#941#0" />
+                <element signature="e#1148#1169#0" />
+                <element signature="e#1382#1404#0" />
+                <element signature="e#1607#1628#0" />
+                <element signature="e#1732#1753#0" />
+                <element signature="e#1838#1860#0" />
+                <element signature="n#!!block;n#OrderQuery#0" />
+                <element signature="e#2321#2342#0" />
+                <element signature="e#2572#2616#0" />
+                <element signature="e#2748#2755#0" />
+                <element signature="e#2886#2900#0" />
+                <element signature="e#3051#3058#0" />
+                <element signature="e#3154#3156#0" />
+                <element signature="e#3297#3304#0" />
+                <element signature="n#!!block;n#CloseOrder#0" />
+                <element signature="n#!!block;n#SignUnifiedOrder#0" />
+                <element signature="e#2319#2348#0" />
+                <element signature="e#2438#2548#0" />
+                <element signature="e#2462#2477#0" />
+                <element signature="e#2495#2545#0" />
+                <element signature="e#2563#2600#0" />
+                <element signature="n#!!block;n#CreateRequestPayment#0" />
+                <element signature="e#3000#3025#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/go/src/encoding/xml/marshal.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="77" column="78" selection-start-line="77" selection-start-column="78" selection-end-line="77" selection-end-column="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/payment/data.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="59" column="56" selection-start-line="59" selection-start-column="56" selection-end-line="59" selection-end-column="56" />
+            <state relative-caret-position="135">
+              <caret line="47" column="41" lean-forward="true" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
+              <folding>
+                <element signature="e#17#101#0" />
+                <element signature="e#79#296#0" />
+                <element signature="e#2337#2354#0" />
+                <element signature="e#2698#4294#0" />
+                <element signature="e#2965#3024#0" />
+                <element signature="e#3515#3640#0" />
+                <element signature="e#4548#4856#0" />
+                <element signature="e#4846#5361#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -39,11 +106,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/payment/encode.go" />
         <option value="$PROJECT_DIR$/payment/util.go" />
-        <option value="$PROJECT_DIR$/payment/pay.go" />
+        <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/payment/data.go" />
+        <option value="$PROJECT_DIR$/payment/pay.go" />
       </list>
     </option>
   </component>
@@ -58,6 +125,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -74,7 +142,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -84,7 +151,7 @@
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../learningGo" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -120,12 +187,12 @@
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20351157" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20670392" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32954547" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32899022" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -149,13 +216,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
           <caret line="93" column="36" lean-forward="true" selection-start-line="93" selection-start-column="36" selection-end-line="93" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/go/src/encoding/xml/marshal.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="78" column="43" lean-forward="true" selection-start-line="78" selection-start-column="43" selection-end-line="78" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -188,65 +248,105 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/go/src/strings/strings.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1">
+          <caret line="846" column="3" selection-start-line="846" selection-start-column="3" selection-end-line="846" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/go/src/net/http/request.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="801" column="5" selection-start-line="801" selection-start-column="5" selection-end-line="801" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/go/src/io/ioutil/ioutil.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/payment/util.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="41" column="18" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="18" />
+        <state relative-caret-position="30">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding>
+            <element signature="e#17#116#0" expanded="true" />
             <element signature="n#!!block;n#Struct2Map#0" />
-            <element signature="e#261#325#0" />
             <element signature="n#!!block;n#GetNonceStr#0" />
-            <element signature="e#472#635#0" />
-            <element signature="e#683#726#0" />
-            <element signature="n#!!block;n#GetTradeNo#0" />
-            <element signature="e#899#942#0" />
+            <element signature="n#!!block;n#GetOutTradeNo#0" />
             <element signature="n#!!block;n#GetRandom#0" />
-            <element signature="e#1022#1063#0" />
-            <element signature="e#1111#1156#0" />
             <element signature="n#!!block;n#GetMD5Encode#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/payment/pay.go">
+    <entry file="file://$PROJECT_DIR$/payment/data.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="33" column="40" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
+        <state relative-caret-position="135">
+          <caret line="47" column="41" lean-forward="true" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
           <folding>
-            <element signature="e#107#138#0" />
-            <element signature="e#635#642#0" />
-            <element signature="n#!!block;n#UnifiedOrder#0" />
-            <element signature="e#1082#1096#0" />
-            <element signature="e#1303#1324#0" />
-            <element signature="e#1538#1560#0" />
-            <element signature="e#1739#1760#0" />
-            <element signature="e#1838#1859#0" />
-            <element signature="e#1944#1966#0" />
-            <element signature="e#2007#2094#0" />
-            <element signature="e#2125#2231#0" />
-            <element signature="n#!!block;n#SignUnifiedOrder#0" />
-            <element signature="e#2425#2454#0" />
-            <element signature="e#2544#2654#0" />
-            <element signature="e#2568#2583#0" />
-            <element signature="e#2601#2651#0" />
-            <element signature="e#2669#2706#0" />
-            <element signature="n#!!block;n#CreateRequestPayment#0" />
-            <element signature="e#3106#3131#0" />
+            <element signature="e#17#101#0" />
+            <element signature="e#79#296#0" />
+            <element signature="e#2337#2354#0" />
+            <element signature="e#2698#4294#0" />
+            <element signature="e#2965#3024#0" />
+            <element signature="e#3515#3640#0" />
+            <element signature="e#4548#4856#0" />
+            <element signature="e#4846#5361#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+        <state relative-caret-position="105">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/payment/data.go">
+    <entry file="file:///usr/local/go/src/encoding/xml/marshal.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="59" column="56" selection-start-line="59" selection-start-column="56" selection-end-line="59" selection-end-column="56" />
+        <state relative-caret-position="112">
+          <caret line="77" column="78" selection-start-line="77" selection-start-column="78" selection-end-line="77" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/payment/pay.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="37" column="26" lean-forward="true" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+          <folding>
+            <element signature="e#676#708#0" />
+            <element signature="n#!!block;n#TestOrderQuery#0" />
+            <element signature="n#!!block;n#UnifiedOrder#0" />
+            <element signature="e#927#941#0" />
+            <element signature="e#1148#1169#0" />
+            <element signature="e#1382#1404#0" />
+            <element signature="e#1607#1628#0" />
+            <element signature="e#1732#1753#0" />
+            <element signature="e#1838#1860#0" />
+            <element signature="n#!!block;n#OrderQuery#0" />
+            <element signature="e#2321#2342#0" />
+            <element signature="e#2572#2616#0" />
+            <element signature="e#2748#2755#0" />
+            <element signature="e#2886#2900#0" />
+            <element signature="e#3051#3058#0" />
+            <element signature="e#3154#3156#0" />
+            <element signature="e#3297#3304#0" />
+            <element signature="n#!!block;n#CloseOrder#0" />
+            <element signature="n#!!block;n#SignUnifiedOrder#0" />
+            <element signature="e#2319#2348#0" />
+            <element signature="e#2438#2548#0" />
+            <element signature="e#2462#2477#0" />
+            <element signature="e#2495#2545#0" />
+            <element signature="e#2563#2600#0" />
+            <element signature="n#!!block;n#CreateRequestPayment#0" />
+            <element signature="e#3000#3025#0" />
+          </folding>
         </state>
       </provider>
     </entry>

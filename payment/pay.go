@@ -20,6 +20,7 @@ const (
 	apiKey = ""
 	ip = ""
 	notify_url = ""
+	out_trade_no = ""
 )
 
 // 测试样例
@@ -28,14 +29,14 @@ func TestPayment() {
 	o := &RequestUnifiedOrder{
 		AppId:appId,
 		Openid:"",		// 这个应当作为参数传过来
-		Mch_id:mch_id,
-		Nonce_str:GetNonceStr(32),				// 获取32个随机字符串 数字 + 大写字母
+		MchId:mch_id,
+		NonceStr:GetNonceStr(32),				// 获取32个随机字符串 数字 + 大写字母
 		Body:"Body",
-		Out_trade_no:GetOutTradeNo(),				// 获取32位商户号, 时间戳 + 随机数
-		Total_fee:1000,
-		Spbill_create_ip:ip,
-		Notify_url: notify_url,
-		Trade_type:"JSAPI",
+		OutTradeNo:GetOutTradeNo(),				// 获取32位商户号, 时间戳 + 随机数
+		TotalFee:1000,
+		SpbillCreateIp:ip,
+		NotifyUrl: notify_url,
+		TradeType:"JSAPI",
 	}
 	// 调用统一下单接口 获取prepay_id 和 nonce_str
 	resp,err := UnifiedOrder(o)
@@ -47,8 +48,25 @@ func TestPayment() {
 	// 统一下单支付成功后, 要及时将订单存储到数据库中
 
 	// 生成返回给客户端的信息
-	res := CreateRequestPayment(resp.Nonce_str, resp.Prepay_id)
+	res := CreateRequestPayment(resp.NonceStr, resp.PrepayId)
 	fmt.Println(*res)
+}
+
+func TestOrderQuery() {
+	o := &RequestOrderQuery{
+		AppId:appId,
+		MchId:mch_id,
+		OutTradeNo:out_trade_no,
+		NonceStr:GetNonceStr(32),
+		SignType:"MD5",
+	}
+
+	resp,err := OrderQuery(o)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	fmt.Println(*resp)
 }
 
 
@@ -60,7 +78,7 @@ func UnifiedOrder(o *RequestUnifiedOrder) (*ResponseUnifiedOrder, error) {
 	// 值-对应 struct 中的字段值
 	mp := Struct2Map(*o)
 	// 根据map 获取签名
-	o.Sign = SignUnifiedOrder(mp, apiKey)
+	o.Sign = Sign(mp, apiKey)
 
 	// 将结构体转换为xml格式, 并调用微信小程序统一下单接口
 	byteReq,err := xml.Marshal(o)
@@ -68,7 +86,7 @@ func UnifiedOrder(o *RequestUnifiedOrder) (*ResponseUnifiedOrder, error) {
 		return nil,err
 	}
 	strReq := strings.Replace(string(byteReq), "RequestUnifiedOrder", "xml", -1)
-	req,err := http.NewRequest("POST", "https://api.mch.weixin.qq.com/pay/unifiedorder", bytes.NewReader([]byte(strReq)))
+	req,err := http.NewRequest("POST", UnifiedOrderURL, bytes.NewReader([]byte(strReq)))
 	if err != nil {
 		return nil, err
 	}
@@ -92,21 +110,111 @@ func UnifiedOrder(o *RequestUnifiedOrder) (*ResponseUnifiedOrder, error) {
 		return nil, err
 	}
 	// 判断返回值
-	if res.Return_code == "FAIL" {
-		return nil,errors.New("微信支付统一下单失败,原因:" + res.Return_code + " " + res.Return_msg)
+	if res.ReturnCode == "FAIL" {
+		return nil,errors.New("微信支付统一下单失败,原因:" + res.ReturnCode + " " + res.ReturnMsg)
 	}
-	if res.Result_code == "FAIL" {
-		return nil,errors.New("执行业务失败,原因:" + res.Result_code + " " + res.Err_code + " " + res.Err_code_des)
+	if res.ResultCode == "FAIL" {
+		return nil,errors.New("执行业务失败,原因:" + res.ResultCode + " " + res.ErrCode + " " + res.ErrCodeDes)
 	}
 
-	fmt.Println("下单成功: ")
-	fmt.Println(res)
 
 
 	return &res,nil
 }
 
-func SignUnifiedOrder(mp map[string]interface{}, key string) string {
+// 查询订单接口
+func OrderQuery(o *RequestOrderQuery) (*ResponseOrderQuery, error) {
+
+	mp := Struct2Map(*o)
+	o.Sign = Sign(mp, apiKey)
+
+	byteReq,err := xml.Marshal(o)
+	strReq := strings.Replace(string(byteReq), "RequestOrderQuery", "xml", -1)
+	if err != nil {
+		return nil,errors.WithMessagef(err, "OrderQuery marshal struct to xml err")
+	}
+
+	req,err := http.NewRequest("POST", OrderQueryURL, bytes.NewReader([]byte(strReq)))
+	if err != nil {
+		return nil,errors.WithMessagef(err, "OrderQuery create request err")
+	}
+	defer req.Body.Close()
+
+	client := http.Client{}
+	resp,err := client.Do(req)
+	if err != nil {
+		return nil, errors.WithMessagef(err, "OrderQuery get response err")
+	}
+
+	byteResp,err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, errors.WithMessagef(err, "OrderQuery read response data err")
+	}
+
+	res := ResponseOrderQuery{}
+	if err := xml.Unmarshal(byteResp, &res); err != nil {
+		return nil, errors.WithMessagef(err, "OrderQuery unmarshal data err")
+	}
+
+	if res.ReturnCode == "FAIL" {
+		return nil, errors.Errorf("Request Failed, return_code :%s, return_msg:%s", res.ReturnCode, res.ReturnMsg)
+	}
+	if res.ResultCode == "FAIL" {
+		return nil, errors.Errorf("Request Failed, err_code :%s, err_code_des:%s", res.ErrCode, res.ErrCodeDes)
+	}
+
+	fmt.Println("查询订单成功: ")
+	fmt.Println(res)
+
+	return &res,nil
+
+
+}
+
+// 关闭订单接口
+func CloseOrder(o *RequestCloseOrder) (*ResponseCloseOrder, error) {
+	mp := Struct2Map(*o)
+	o.Sign = Sign(mp, apiKey)
+
+	byteReq,err := xml.Marshal(o)
+	if err != nil {
+		return nil, errors.WithMessagef(err, "CloseOrder marshal struct to byte err")
+	}
+
+	req,err := http.NewRequest("POST", CloseOrderUrl, bytes.NewReader(byteReq))
+	if err != nil {
+		return nil, errors.WithMessagef(err, "CloseOrder create request err")
+	}
+	defer req.Body.Close()
+	client := http.Client{}
+	resp,err := client.Do(req)
+	if err != nil {
+		return nil,errors.WithMessagef(err, "CloseOrder get response err")
+	}
+
+	byteResp,err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, errors.WithMessagef(err, "CloseOrder read response err")
+	}
+	res := ResponseCloseOrder{}
+	if err = xml.Unmarshal(byteResp, &res); err != nil {
+		return nil, errors.WithMessage(err, "CloseOrder unmarshal response err")
+	}
+
+	if res.ReturnCode == "FAIL" {
+		return nil, errors.Errorf("return_code: %s, return_msg:%s", res.ReturnCode, res.ReturnMsg)
+	}
+	if res.ResultCode == "FAIL" {
+		return nil, errors.Errorf("result_code: %s, result_msg:%s", res.ResultCode, res.ResultMsg)
+	}
+
+	return &res, nil
+
+}
+
+
+// 获取签名
+func Sign(mp map[string]interface{}, key string) string {
 	// 获取键的集合
 	keys := make([]string, 0)
 	for k,_ := range mp {
